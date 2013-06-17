@@ -1,0 +1,32 @@
+body{
+	margin-left:15%;
+	margin-top:50px;
+	color:#000;
+	background-color:#ffffff;
+	width:70%;
+}
+
+h1, h2, p{
+	font-family:Helvetica,Arial,sans-serif;
+	font-size:60px;
+	font-weight:800;
+	color:#000;
+	line-height:60px;
+	text-transform:uppercase;
+}
+
+h2{
+	font-size:30px;
+	font-weight:800;
+	color:#333;
+}
+
+.normal-map{
+	max-width: 100%;
+}
+
+
+a:link{color:#000;font-weight:800;}
+a:active{text-decoration:none;}
+a:hover{color:#000;text-decoration:underline;}
+a:visited{color:#000;text-decoration:none;}

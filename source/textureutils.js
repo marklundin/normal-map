@@ -4,23 +4,32 @@ define([
 	"source/glsl!normalToHeight.glsl"
 	], function( heightToNormalDuDvShader, heightToNormal4x4Shader, normalToHeightShader ){
 	
+	var canvas,
+		context2D,
+		context3D,
+		indices,
+		vertices,
+		dimensions;
 
-            
-	var canvas		= document.createElement( 'canvas' );
-		context2D   = canvas.getContext( '2d' );
-		context3D 	= new GLOW.Context( { alpha: false, antialias: false, depth: false, stencil: false, preserveDrawingBuffer: true } );
-		indices 	= GLOW.Geometry.Plane.indicesFlipped(),
-		vertices 	= GLOW.Geometry.Plane.vertices(),
-		dimensions  = new GLOW.Vector2();
-		// 
+		
+	function init(){
+        
+		
 
-	GL.pixelStorei( GL.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true );
+        if( canvas === undefined ){
 
-	// document.body.appendChild( context3D.domElement );
-	// document.body.appendChild( canvas ); 
+			canvas		= document.createElement( 'canvas' );
+			context2D   = canvas.getContext( '2d' );
+			context3D 	= new GLOW.Context( { alpha: false, antialias: false, depth: false, stencil: false, preserveDrawingBuffer: true } );
+			indices 	= GLOW.Geometry.Plane.indicesFlipped();
+			vertices 	= GLOW.Geometry.Plane.vertices();
+			dimensions  = new GLOW.Vector2();
 
-	context3D.enableCulling( true, { frontFace: GL.CCW, cullFace: GL.FRONT } );
-    context3D.enableExtension( "OES_standard_derivatives" );
+			context3D.enableCulling( true, { frontFace: GL.CCW, cullFace: GL.FRONT } );
+		    context3D.enableExtension( "OES_standard_derivatives" );
+		}
+
+	}
 
 
 	var api = {
@@ -28,8 +37,7 @@ define([
 	
 		heightToNormal: function( media, callback, useDuDV ){
 
-			// context3D.domElement.width = media.width;
-			// context3D.domElement.height = media.height;
+			init();
 
 			var shader = ( useDuDV ? heightToNormalDuDvShader : heightToNormal4x4Shader );
 			dimensions.set( media.width, media.height );
@@ -82,6 +90,8 @@ define([
 		},
 
 		normalToHeight: function( media ){
+
+			init();
 
 			context3D.domElement.width = media.width;
 			context3D.domElement.height = media.height;
