@@ -1,0 +1,13 @@
+{
+  "name": "Normal",
+  "version": "0.0.0",
+  "description": "Normal Map Generator",
+  "main": "main.js",
+  "repository": "",
+  "author": "Mark Lundin",
+  "license": "BSD",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-connect": "~0.2.0"
+  }
+}
