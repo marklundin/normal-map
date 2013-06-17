@@ -1,5 +1,5 @@
 define([
-	"source/glsl!./heightToNormalDUDV.glsl",
+	"source/glsl!./heightToNormalDuDv.glsl",
 	"source/glsl!./heightToNormal4x4.glsl",
 	"source/glsl!./normalToHeight.glsl"
 	], function( heightToNormalDuDvShader, heightToNormal4x4Shader, normalToHeightShader ){
