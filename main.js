@@ -3,7 +3,8 @@ define( [
 	'source/textureutils'
 	], function( doc, util ){
 	
-	var hasWebGL = window.WebGLRenderingContext && document.createElement('canvas').getContext('webgl') !== null;
+	var c = document.createElement('canvas');
+	var hasWebGL = window.WebGLRenderingContext && ( c.getContext('webgl') !== null || c.getContext('experimental-webgl') !== null );
 
 	var container = document.querySelector('#main_content');
 
